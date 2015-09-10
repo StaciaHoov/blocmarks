@@ -10,10 +10,10 @@ ActionMailer::Base.smtp_settings = {
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.raise_delivery_errors = true
 
-#makes sure interceptor just makes sure that local mail only emails me
+# interceptor  makes sure that local mail only emails me
 class DevelopmentMailInterceptor
     def self.delivering_email(message)
-        message.to = 'staciaray@roadrunner.com'
+        message.to = 'postmaster@sandboxb20f7fdf41be4c7891ae183a7fd8ebb7.mailgun.org'
         message.cc = nil
         message.bcc = nil
     end

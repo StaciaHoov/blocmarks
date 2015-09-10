@@ -5,7 +5,8 @@ class UsersController < ApplicationController
         
         respond_to do |format|
             if @user.save
-                UserMailer.welcome_email(@user).deliver_later
+                #sends email to user when user is created
+                UserMailer.welcome_email(@user).deliver
                 
                 format.html { redirect_to(@user, notice: 'User was succesfully created.') }
                 format.json { render json: @user, status: :created, location: @user }

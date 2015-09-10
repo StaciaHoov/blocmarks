@@ -3,33 +3,31 @@ class IncomingController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:create]
     
     def create
-        @user = User.find(params[:sender]) # Find the user by using params[:sender]
-        @topic = Topic.find(params[:subject]) # Find the topic by using params[:subject]
-        @url = params["body-plain"] # Assign the url to a variable after retreiving it from params["body-plain"]
+        puts "INCOMING PARAMS HERE: #{params}"
+        # @user = User.find(params[:sender])   # Find the user by using params[:sender]
+        # @topic = Topic.find(params[:subject])   # Find the topic by using params[:subject]
+        # @url = params["body-plain"]   # Assign the url to a variable after retreiving it from params["body-plain"]
         
-        if @user == nil
-            @user = User.new(params[:id])
-            @user.save
-        end
+        # if @user == nil  # Check if user is nil, if so, create and save a new user
+        #     @user = User.new(params[:id])
+        #     @user.save
+        # end
         
-        if @topic == nil
-            @topic = User.topics.build(params[:topics_id])
-            @topic.save
-        end
+        # if @topic == nil   # Check if the topic is nil, if so, create and save a new topic
+        #     @topic = User.topics.build(params[:topics_id])
+        #     @topic.save
+        # end
         
-        @bookmark = Bookmark.new(params[:topics_id, :url])
-        @bookmark.save
-        #     flash[:notice] = "Bookmark successfully saved."
-        #     render
-        # else
-        #     flash[:error] = "There was a problem saving the url."
+        # @bookmark = Bookmark.new(params[:topics_id, :url])   # Now that you're sure you have a valid user and topic, build and save a new bookmark
+        # @bookmark.save
+       
     end
             
-     # Check if user is nil, if so, create and save a new user
+     
 
-     # Check if the topic is nil, if so, create and save a new topic
+     
 
-     # Now that you're sure you have a valid user and topic, build and save a new bookmark
+     
 
 
 end
