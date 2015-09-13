@@ -20,7 +20,7 @@ class IncomingController < ApplicationController
         
         # @bookmark = Bookmark.new(params[:topics_id, :url])   # Now that you're sure you have a valid user and topic, build and save a new bookmark
         # @bookmark.save
-       
+        head 200
     end
             
      

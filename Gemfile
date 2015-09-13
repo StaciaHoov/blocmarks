@@ -28,6 +28,10 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'figaro', '1.0'
 
+gem 'puma'
+gem 'rack-timeout'
+
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
