@@ -2,19 +2,13 @@
 <div class='row'>
     <div class='col-md-8'>
         <% @topics.each do |topic| %>
-            <h3><%= link_to topic.title, topic_path(topic) %>
-            <%= link_to topic_path(topic), method: :delete, class: 'btn btn-sm' do %>
+            <h3><%= link_to topic.title, topic %>
+            <%= link_to @topic, method: :delete, class: 'btn btn-sm' do %>
                 <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
             <% end %></h3>
-            <ul>
-                <% topic.bookmarks.each do |bookmark| %>
-                    <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %></li>
-                <% end %>
-            </ul>
         <% end %>
     </div>
-
-<br>
+    <br>
     <div class='col-md-8'>
         <%= form_for @new_topic do |f| %>
             <% f.label :title %>

@@ -1,2 +1,9 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<h1><%= @topic.title %></h1>
+
+<div class='row'>
+    <ul>
+        <% @topic.bookmarks.each do |bookmark| %>
+            <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %></li>
+        <% end %>
+    </ul>
+</div>
