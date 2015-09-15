@@ -8,10 +8,6 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
   end
 
-  def new
-    @topic = Topic.new
-  end
-  
   def create
     @topic = Topic.create(params.require(:topic).permit(:title))
     if @topic.save
@@ -22,6 +18,16 @@ class TopicsController < ApplicationController
     redirect_to :back
   end
   
+  def destroy
+    @topic = Topic.find(params[:id])
+    if @topic.delete
+      flash[:notice]= "Topic successfully removed"
+    else
+      flash[:error]= "There was an error deleting that topic."
+    end
+    redirect_to :back
+  end
+        
   def edit
   end
 end
