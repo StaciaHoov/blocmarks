@@ -12,19 +12,13 @@
   <ul class= "nav nav-tabs">
     <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "About", welcome_about_path %></li>
+    <li><%= link_to "Topics", topics_path %></li>
     
     <div class="pull-right user-info">
       <% if current_user %>
-        Hello <%= current_user.name || current_user.email %>
-        
-        <%= link_to edit_user_registration_path, class: 'btn btn-primary btn-sm' do %>
-          <span class= 'glyphicon glyphicon-user'></span>
-        <% end %>
-        
-        <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
-          <span class= 'glyphicon glyphicon-log-out'></span>
-        <% end %>
-        
+        <%= link_to "My Blocmarks ", edit_user_registration_path %>|
+        <%= link_to " Sign Out", destroy_user_session_path, method: :delete %>
+
       <% else %>
         <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %>
           <span class='glyphicon glyphicon-pencil'></span>

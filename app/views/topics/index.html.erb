@@ -1,0 +1,15 @@
+<h1>All Blocmarks</h1>
+
+<% @topics.each do |topic| %>
+    <h3><%= link_to topic.title, topics_path(topic.id) %></h3>
+        
+        <%= link_to '',  (topic.id), method: :delete, class: 'btn btn-sm' do %>
+            <span class= 'glyphicon glyphicon-remove' aria-hidden="true"></span>
+        <% end %>
+        <ul>
+            <% topic.bookmarks.each do |bookmark| %>
+                <li><%= link_to bookmark.name, bookmark.url, :target=>'_blank' %></li>
+            <% end %>
+        </ul>
+<% end %>
+
