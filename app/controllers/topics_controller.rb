@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
   
   def destroy
     @topic = Topic.find(params[:id])
-    if @topic.delete
+    if @topic.destroy
       flash[:notice]= "Topic successfully removed"
     else
       flash[:error]= "There was an error deleting that topic."
