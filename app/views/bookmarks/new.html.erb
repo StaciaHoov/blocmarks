@@ -1,0 +1,16 @@
+    <div class='col-md-8'>
+        <h3>New Bookmark</h3>
+        <%= form_for [@topic, @bookmark] do |f| %>
+        <div class='col-md-4'>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+        </div>
+        <div class='col-md-4'>
+            <%= f.label :url %>
+            <%= f.text_field :url %>
+        </div>
+        <div class='col-md-4'>
+            <%= f.submit "Submit" %>
+        </div>
+        <% end %>
+    </div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
   
   resources :topics do
-    resources :bookmarks
+    resources :bookmarks, except: [:index]
   end
 
 end
