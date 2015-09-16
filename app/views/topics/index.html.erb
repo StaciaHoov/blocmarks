@@ -3,9 +3,10 @@
     <div class='col-md-8'>
         <% @topics.each do |topic| %>
             <h3><%= link_to topic.title, topic %>
-            <%= link_to @topic, method: :delete, class: 'btn btn-sm' do %>
+            <%= link_to topic, method: :delete, class: 'btn btn-sm' do %>
                 <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
-            <% end %></h3>
+            <% end %>
+            </h3>
         <% end %>
     </div>
     <br>
@@ -16,4 +17,3 @@
         <% end %>
     </div>
 </div>
-    
