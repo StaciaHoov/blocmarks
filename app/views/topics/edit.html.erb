@@ -1,2 +1,9 @@
-<h1>Topics#edit</h1>
-<p>Find me in app/views/topics/edit.html.erb</p>
+<div class='row'>
+    <h1> Edit Topic </h1>
+    <div class='col-md-8'>
+        <%= form_for @topic do |f| %>
+            <%= f.text_field :title %>
+            <%= f.submit "Edit Topic", placeholder: @topic.title %>
+        <% end %>
+    </div>
+</div>
