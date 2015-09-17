@@ -8,8 +8,12 @@ class BookmarksController < ApplicationController
   end
   
   def create
+    @user = current_user
     @topic = Topic.find(params[:topic_id])
-    @bookmark = @topic.bookmarks.create(params.require(:bookmark).permit(:url, :title))
+    @bookmark = @topic.bookmarks.create(params.require(:bookmark).permit(:url, :title, :user_id))
+    @bookmark.user = current_user
+    authorize @bookmark
+    
     if @bookmark.save
       flash[:notice] = "Bookmark successfully created."
     else
@@ -22,13 +26,28 @@ class BookmarksController < ApplicationController
   end
   
   def destroy
+    @user = current_user
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
+    
     if @bookmark.destroy
       flash[:notice] = "Bookmark deleted."
     else
       flash[:error] = "There was a problem deleting the bookmark."
     end
     redirect_to @topic
+  end
+  
+  def update?
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = Bookmark.find(params[:id])
+    
+    if @bookmark.update_attribute(params.require(:bookmark).permit(:url, :title, :user_id))
+      flash[:notice] = "Bookmark updated."
+    else
+      flash[:error] = "There was a problem updating the bookmark."
+    end
+    redirect_to :back
   end
 end

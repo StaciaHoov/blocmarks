@@ -9,7 +9,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.create(params.require(:topic).permit(:title))
+    @user = current_user
+    @topic = @user.topics.create(params.require(:topic).permit(:title))
+    
     if @topic.save
       flash[:notice]= "New topic added"
     else
@@ -18,8 +20,13 @@ class TopicsController < ApplicationController
     redirect_to :back
   end
   
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+  
   def destroy
     @topic = Topic.find(params[:id])
+    
     if @topic.destroy
       flash[:notice]= "Topic successfully removed"
     else
@@ -28,7 +35,16 @@ class TopicsController < ApplicationController
     redirect_to :back
   end
         
-  def edit
+  def update
+    @topic = Topic.find(params[:id])
+    
+    if @topic.update_attributes(params.require(:topic).permit(:title))
+      flash[:notice] = "Topic updated."
+    else
+      flash[:error] = "There was a problem updating the topic."
+    end
+    redirect_to topics_path
   end
+  
 end
   

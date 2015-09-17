@@ -30,6 +30,7 @@ gem 'figaro', '1.0'
 
 gem 'puma'
 gem 'rack-timeout'
+gem 'pundit'
 
 
 
