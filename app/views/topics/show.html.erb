@@ -1,16 +1,16 @@
 <h1><%= @topic.title %>  <%= link_to "Edit topic", edit_topic_path, class: 'btn btn-success' %></h1>
 
 <div class='row'>
-    <div class='col-md-8'>
-        <ul>
+    <div class='col-md-12'>
+        <ul class= "list-unstyled">
             <% @topic.bookmarks.each do |bookmark| %>
-                <li><%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-                    <%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
+                <li>
+                    <h3><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
                     <% if policy(bookmark).destroy? %>
                         <%= link_to topic_bookmark_path(@topic, bookmark), method: :delete, class: 'btn btn-sm' do %>
                             <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
                         <% end %>
-                    <% end %>
+                    <% end %><%= render partial: 'likes/like', locals: {topic: @topic, bookmark: bookmark} %></h3>
                 </li>
             <% end %>
         </ul>
@@ -26,8 +26,7 @@
                 </div>
                 <div class='col-md-4'>
                     <%= f.label :url %>
-                    <%= f.text_field :url, placeholder: 'https://www' %>
-                    <small>(Include 'https://www' in address)</small>
+                    <%= f.text_field :url, placeholder: 'Include https://www' %>
                 </div>
                 <div class='col-md-4'>
                     <%= f.submit "Submit" %>
