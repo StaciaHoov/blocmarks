@@ -1,0 +1,3 @@
+what determines what methods I can call on an object?
+-associations in model?
+-ex. why did I get no method for Topic.bookmarks
