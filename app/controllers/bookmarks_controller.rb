@@ -21,7 +21,6 @@ class BookmarksController < ApplicationController
 
   def destroy
     @user = current_user
-    @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     
@@ -30,7 +29,7 @@ class BookmarksController < ApplicationController
     else
       flash[:error] = "There was a problem deleting the bookmark."
     end
-    redirect_to @topic
+    redirect_to :back
   end
   
   def update?
