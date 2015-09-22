@@ -2,7 +2,10 @@
 <h2>My Bookmarks</h2>
 <ul class="list-unstyled">
     <% @user_bookmarks.each do |bookmark| %>   
-        <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %></li>
+        <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
+        <%= link_to bookmark_path(bookmark), method: :delete, class: 'btn btn-sm' do %>
+            <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
+        <% end %></li>
     <% end %>
 </ul>
 
