@@ -8,11 +8,9 @@
 
 <h2>Liked Bookmarks</h2>
 <ul class="list-unstyled">
-    <% @liked_bookmarks.each do |like| %>
-        <li><%= link_to like.bookmark.title, like.bookmark.url, :target=>'_blank' %>
-            <%= link_to bookmark_like_path(like.bookmark, like), class: 'btn btn-danger', method: :delete do %>
-            <i class="glyphicon glyphicon-star-empty"></i>&nbsp; Unlike
-        <% end %></li>
+    <% @liked_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>
+        <%= render partial: 'users/liked_topics', locals: {topic: topic, bookmarks: bookmarks } %>
     <% end %>
 </ul>
 
+ 
