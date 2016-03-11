@@ -1,19 +1,22 @@
-
-<h2>My Bookmarks</h2>
-<ul class="list-unstyled">
-    <% @user_bookmarks.each do |bookmark| %>   
-        <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
-        <%= link_to bookmark_path(bookmark), method: :delete, class: 'btn btn-sm' do %>
-            <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
-        <% end %></li>
-    <% end %>
-</ul>
-
-<h2>Liked Bookmarks</h2>
-<ul class="list-unstyled">
-    <% @liked_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>
-        <%= render partial: 'users/liked_topics', locals: {topic: topic, bookmarks: bookmarks } %>
-    <% end %>
-</ul>
-
- 
+<div class='row'>
+    <div class='col-md-12'>
+        <h2>My Bookmarks</h2>
+        <ul class="list-unstyled">
+            <% @user_bookmarks.each do |bookmark| %>   
+                <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
+                <%= link_to bookmark_path(bookmark), method: :delete, class: 'btn btn-sm' do %>
+                    <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
+                <% end %></li>
+            <% end %>
+        </ul>
+    </div>    
+        
+    <h2>Liked Bookmarks</h2>
+    <div class='col-md-4'>
+        <ul class="list-unstyled">
+            <% @liked_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>
+                <%= render partial: 'users/liked_topics', locals: {topic: topic, bookmarks: bookmarks } %>
+            <% end %>
+        </ul>
+    </div>
+</div> 

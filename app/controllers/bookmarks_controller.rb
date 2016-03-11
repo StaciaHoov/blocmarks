@@ -32,7 +32,7 @@ class BookmarksController < ApplicationController
     redirect_to :back
   end
   
-  def update?
+  def update
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
     

@@ -1,0 +1,13 @@
+<%= form_for [topic, bookmark] do |f| %>
+    <div class='col-md-4'>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <div class='col-md-4'>
+        <%= f.label :url %>
+        <%= f.text_field :url, placeholder: 'Include https://www' %>
+    </div>
+    <div class='col-md-4'>
+        <%= f.submit "Submit" %>
+    </div>
+<% end %>

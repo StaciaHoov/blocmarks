@@ -2,36 +2,15 @@
 
 <div class='row'>
     <div class='col-md-12'>
-        <ul class= "list-unstyled">
-            <% @topic.bookmarks.each do |bookmark| %>
-                <li>
-                    <h3><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
-                    <% if policy(bookmark).destroy? %>
-                        <%= link_to topic_bookmark_path(@topic, bookmark), method: :delete, class: 'btn btn-sm' do %>
-                            <span class= 'glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
-                        <% end %>
-                    <% end %><%= render partial: 'likes/like', locals: {topic: @topic, bookmark: bookmark} %></h3>
-                </li>
-            <% end %>
-        </ul>
+      <ul class= "list-unstyled">
+        <%= render @topic.bookmarks %>
+      </ul>
     </div>
 
     <div class='col-md-8'>
-        <% if policy(Bookmark.new).create? %>
-            <h4>New Bookmark</h4>
-            <%= form_for [@topic, Bookmark.new] do |f| %>
-                <div class='col-md-4'>
-                    <%= f.label :title %>
-                    <%= f.text_field :title %>
-                </div>
-                <div class='col-md-4'>
-                    <%= f.label :url %>
-                    <%= f.text_field :url, placeholder: 'Include https://www' %>
-                </div>
-                <div class='col-md-4'>
-                    <%= f.submit "Submit" %>
-                </div>
-            <% end %>
-        <% end %>
+      <% if policy(Bookmark.new).create? %>
+        <h4>New Bookmark</h4>
+          <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new } %>
+      <% end %>
     </div>
 </div>

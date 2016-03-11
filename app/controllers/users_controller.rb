@@ -7,7 +7,6 @@ class UsersController < ApplicationController
         @liked_bookmarks = @user.liked_bookmarks
     end
     
-    
     def create
         @user = User.new(params[:user])
         
