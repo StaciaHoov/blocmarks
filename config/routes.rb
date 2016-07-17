@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show]
-  get 'welcome/about'
-  root to: 'topics#index'
+  root to: 'welcome#index'
   post :incoming, to: 'incoming#create'
   
   resources :topics do
