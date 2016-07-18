@@ -1,7 +1,8 @@
 <div class='col-md-8'>
-  <h1>All Bookmarks</h1>
   <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-1'></div>
+    <div class='col-md-7'>
+      <h1>All Bookmarks</h1>
       <% @topics.each do |topic| %>
         <h3><%= link_to topic.title, topic %>
           <% if policy(topic).destroy? %>
@@ -12,8 +13,11 @@
         </h3>
       <% end %>
     </div>
-    <br>
-    <div class='col-md-8'>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-md-1'></div>
+    <div class='col-md-7'>
       <%= form_for @new_topic do |f| %>
         <%= f.text_field :title %>
         <%= f.submit "Add Topic" %>
