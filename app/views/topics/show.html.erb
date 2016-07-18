@@ -1,16 +1,16 @@
-<h1><%= @topic.title %>  <%= link_to "Edit topic", edit_topic_path, class: 'btn btn-success' %></h1>
+<h1><%= @topic.title %>  <%= link_to "Edit topic", edit_topic_path, class: 'btn btn-success btn-sm' %></h1>
 
 <div class='row'>
-    <div class='col-md-12'>
+    <div class='col-md-8'>
       <ul class= "list-unstyled">
         <%= render @topic.bookmarks %>
       </ul>
     </div>
-
-    <div class='col-md-8'>
+    <div class='col-md-1'></div>
+    <div class='col-md-6'>
       <% if policy(Bookmark.new).create? %>
-        <h4>New Bookmark</h4>
-          <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new } %>
+        <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new } %>
       <% end %>
     </div>
+    <div class='col-md-1'></div>
 </div>

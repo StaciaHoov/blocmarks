@@ -9,50 +9,55 @@
 </head>
 <body>
   <div class="container">
-    <ul class= "nav nav-tabs">
-      <li><%= link_to "About", welcome_about_path %></li>
-      <li><%= link_to "Topics", root_path %></li>
-      <li><% if current_user %>
-            <%= link_to "My Bookmarks", user_path(current_user) %>
-          <% end %>
-      </li>
-      <div class="pull-right user-info">
-        <ul class="list-unstyled">
-          <% if current_user %>
-            <li><p>Hello <%= current_user.name || current_user.email %>!</p></li>
-            <li><%= link_to "Edit User    ", edit_user_registration_path %>|
-            <%= link_to "  Sign Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %>
-              <span class='glyphicon glyphicon-pencil'></span>
-            <% end %> 
-            <%= link_to new_user_session_path, class: 'btn btn-primary btn-sm' do %>
-              <span class= 'glyphicon glyphicon-log-in'></span>
+    <div class="pull-right user-info">
+      <% if current_user %>
+        Hello <%= current_user.name || current_user.email %>!</p>
+        <%= link_to "Edit User    ", edit_user_registration_path %>|
+        <%= link_to "  Sign Out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %>
+          <span class='glyphicon glyphicon-pencil'></span>
+        <% end %>
+        <%= link_to new_user_session_path, class: 'btn btn-primary btn-sm' do %>
+          <span class= 'glyphicon glyphicon-log-in'></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class='col-md-12'>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:error] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>    
+    </div>
+  </div>
+    <div class="menu col-md-2">
+      <ul class='list-unstyled'>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Topics", topics_path %></li>
+        <li><% if current_user %>
+              <%= link_to "My Bookmarks", user_path(current_user) %>
             <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </ul>
+        </li>
+      </ul>
+    </div>
     
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:error] %>
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:alert] %>
-      </div>
-    <% end %>  
-    <%= yield %>
+    <div class="col-md-10">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

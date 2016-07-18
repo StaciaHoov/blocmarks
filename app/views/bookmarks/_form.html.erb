@@ -1,13 +1,14 @@
 <%= form_for [topic, bookmark] do |f| %>
-    <div class='col-md-4'>
+    <h3> Add Bookmark</h3>
+    <div class='form-group'>
         <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class:'form-control'%>
     </div>
-    <div class='col-md-4'>
+    <div class='form-group'>
         <%= f.label :url %>
-        <%= f.text_field :url, placeholder: 'Include https://www' %>
+        <%= f.text_field :url, placeholder: 'Include https://www', class:'form-control' %>
     </div>
-    <div class='col-md-4'>
-        <%= f.submit "Submit" %>
+    <div class='form-group'>
+        <%= f.submit "Submit", class:'btn btn-sm' %>
     </div>
 <% end %>

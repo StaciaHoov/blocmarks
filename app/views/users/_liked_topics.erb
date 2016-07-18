@@ -1,8 +1,8 @@
 <h3><%= topic.title %></h3>
 <% bookmarks.each do |bookmark| %>
-
     <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
-        <%= link_to bookmark_like_path(bookmark, Like.where(user: current_user, bookmark: bookmark).first), class: 'btn btn-danger', method: :delete do %>
+        <%= link_to bookmark_like_path(bookmark, Like.where(user: current_user, bookmark: bookmark).first), class: 'btn btn-danger btn-xs', method: :delete do %>
             <i class="glyphicon glyphicon-star-empty"></i>&nbsp; Unlike
-        <% end %></li>
+        <% end %>
+    </li>
 <% end %>

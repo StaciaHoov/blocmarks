@@ -1,6 +1,6 @@
 <div class='row'>
-    <div class='col-md-12'>
-        <h2>My Bookmarks</h2>
+    <div class='col-md-8'>
+        <h1>My Bookmarks</h1>
         <ul class="list-unstyled">
             <% @user_bookmarks.each do |bookmark| %>   
                 <li><%= link_to bookmark.title, bookmark.url, :target=>'_blank' %>
@@ -11,8 +11,9 @@
         </ul>
     </div>    
         
-    <h2>Liked Bookmarks</h2>
-    <div class='col-md-4'>
+    
+    <div class='col-md-8'>
+        <h1>Liked Bookmarks</h1>
         <ul class="list-unstyled">
             <% @liked_bookmarks.group_by(&:topic).each do |topic, bookmarks| %>
                 <%= render partial: 'users/liked_topics', locals: {topic: topic, bookmarks: bookmarks } %>
