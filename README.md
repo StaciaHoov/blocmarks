@@ -4,15 +4,15 @@ A social website bookmarking app with email integration.
 It allows users to email, manage and share bookmarked URLs.
 
 
-## Users can:
+## Users can
 * Sign up and confirm account    
 * Reset password
 * Create topics and bookmarks from the app interface
-* Categorized bookmarks by topic 
+* Categorize bookmarks by topic 
 * Email an URL to app and have it saved in the database under the designated topic   
 
 
-## User stories:
+## User stories
 
 As a user, I want to 
 * view an index of all the bookmarks I've saved, organized by topic.    
@@ -25,6 +25,6 @@ As a user, I want to
 
 ## Gems used    
 * Devise for user authentication to allow users to sign-up    
-* Mail gun to congigure app to receive an email containing a bookmark URL          
+* Mailgun to congigure app to receive an email containing a bookmark URL          
 * Pundit for creating policies for user authorization    
 
